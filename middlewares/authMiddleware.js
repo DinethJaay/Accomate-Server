@@ -14,6 +14,7 @@ module.exports = (req, res, next) => {
         // Verify the token and get user data
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded; // Add the decoded user data to object
+        console.log('Decoded Token:', decoded); // Log the decoded token for debugging
         next();
     } catch (error) {
         res.status(401).json({ message: 'Token is not valid' });

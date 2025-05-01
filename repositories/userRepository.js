@@ -41,6 +41,11 @@ class UserRepository {
 
         return rows[0].count > 0;
     }
+     // Get user by userId
+    async getUserById(userId) {
+        const result = await this.db.query('SELECT * FROM users WHERE uId = ?', [userId]);
+        return result[0]; // Assuming only one user is returned
+    }
 
     //create new user
     async createUser(user) {
